@@ -1,9 +1,28 @@
 # SMIC 0.18 µm 数字后端 → MPW tapeout skill
 
+[![license](https://img.shields.io/badge/license-CC--BY--4.0%20%2B%20MIT-blue.svg)](#许可按内容类型分许可不是对同一作品二选一)
+[![process](https://img.shields.io/badge/process-0.18%C2%B5m%201P5M%20%E2%86%92%201P6M-informational.svg)](#它包含什么)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 一个给 AI agent 用的 **skill**（也可以当人读的 checklist）：从 RTL 综合一路做到可交给 foundry 的 MPW 交付包，
 其中 **1P5M → 1P6M 金属层选项迁移**这一段，把 **DRC / 天线 / LVS 全部打到零**。
 
 不是教程合集，而是**判据 + 坑 + 验收闸门**：每条都写清「怎么判过、拿什么证明、错了长什么样」。
+
+> **3 秒版**：RTL 综合 → Innovus P&R → 1P6M 版图链（pad 换 6MT / 官方密封环 / DMF 填充 / marker 重建）
+> → Calibre DRC·LVS·天线清零 → RC 重抽 → PT 五角 → MPW 交付包。
+
+```mermaid
+flowchart LR
+  A[RTL] --> B["DC 综合<br/>+ LEC"]
+  B --> C["Innovus<br/>floorplan/PG/place/CTS/route"]
+  C --> D["1P6M 版图链<br/>8 步"]
+  D --> E{"DRC / 天线 / LVS"}
+  E -->|"不为 0"| C
+  E -->|"全 0"| F["RC 重抽<br/>tluplus→nxtgrd→StarRC"]
+  F --> G["PT 五角"]
+  G --> H["MPW 交付包"]
+```
 
 ## 它包含什么
 

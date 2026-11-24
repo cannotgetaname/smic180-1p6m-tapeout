@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "smic180-1p6m-tapeout: SMIC 0.18 µm 数字后端到 MPW tapeout"
+message: "If you use this skill or its checklists, please cite it as below."
+type: software
+authors:
+  - name: "cannotgetaname"
+    website: "https://github.com/cannotgetaname"
+version: 1.0.0
+date-released: "2026-11-24"
+license: CC-BY-4.0
+url: "https://github.com/cannotgetaname/smic180-1p6m-tapeout"
